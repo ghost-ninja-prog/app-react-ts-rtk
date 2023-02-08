@@ -7,13 +7,13 @@ import TodoItem from "../../components/TodoItem"
 import TodoInputPlus from "../../components/TodoInputPlus"
 
 import './styles.css'
+import { removeTodo } from "../../store/reducers/todoSlice"
 
 
 const FetchTodoList: React.FC = () => {
     
-    const asyncTodos = useAppSelector(state => state.asyncTodos.todos)
+    const {error, loading, todos} = useAppSelector(state => state.asyncTodos)
 
-    const loading = useAppSelector(state => state.asyncTodos.loading)
 
     const dispatch = useAppDispatch()
     
@@ -33,15 +33,18 @@ const FetchTodoList: React.FC = () => {
                 
                 <TodoInputPlus addTodo={addTodo} />
 
+                {error && <h3>Server error</h3>}
+
                 <ul className="todoList">
-                    { asyncTodos.length > 0 ?                 
-                        asyncTodos.map((todo: ITodo) => <TodoItem 
+                    { todos.length > 0 ?                 
+                        todos.map((todo: ITodo) => <TodoItem 
                                                             key={todo.id} 
                                                             id={todo.id} 
                                                             completed={todo.completed}
                                                             title={todo.title}
                                                             loading={loading}
                                                             toggleTodo={toggleTodo}
+                                                            removeTodo={removeTodo}
                                                         />)
                         :
                         <li>Not Todos!!!</li>

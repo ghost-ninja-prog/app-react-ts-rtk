@@ -6,7 +6,7 @@ import  './styles.css'
 
 
 
-const Counter: React.FC = () => {
+const CounterPage: React.FC = () => {
 
     const counter = useAppSelector(state => state.counter)
 
@@ -23,4 +23,4 @@ const Counter: React.FC = () => {
         </div>
     )
 }
-export default Counter
+export default CounterPage

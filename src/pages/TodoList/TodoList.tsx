@@ -1,7 +1,9 @@
 import React, { useState } from "react"
-import { addTodo, removeTodo } from "../../store/reducers/todoSlice"
+import { addTodo, removeTodo, toggleTodo } from "../../store/reducers/todoSlice"
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks"
-import { ITodo } from "../../types/types"
+import TodoItem from "../../components/TodoItem"
+
+import './style.css'
 
 
 const TodoList: React.FC = () => {
@@ -26,8 +28,17 @@ const TodoList: React.FC = () => {
                 </div>
 
                 <ul>
-                    { todos.length > 0 ?                 
-                        todos.map((todo: ITodo) => <li className="todoItem" key={todo.id}>{todo.title}<button onClick={() => dispatch(removeTodo(todo.id))}>&times;</button></li>)
+                    {
+                        todos.length > 0 ?
+                        todos.map(todo => <TodoItem 
+                                                key={todo.id} 
+                                                id={todo.id}
+                                                title={todo.title}
+                                                completed={todo.completed}
+                                                toggleTodo={toggleTodo}
+                                                removeTodo={removeTodo}
+                                            />
+                                )
                         :
                         <li>Not Todos!!!</li>
                     }

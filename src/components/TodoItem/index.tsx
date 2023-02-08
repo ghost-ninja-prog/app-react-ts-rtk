@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../hooks/hooks'
 
 
 
-const TodoItem = ({ id, title, completed, toggleTodo, loading }: ITodoProps) => {
+const TodoItem = ({ id, title, completed, toggleTodo, removeTodo, loading }: ITodoProps) => {
 
     const [checked, setChecked] = useState(completed)
 
@@ -28,7 +28,7 @@ const TodoItem = ({ id, title, completed, toggleTodo, loading }: ITodoProps) => 
             <span className='todoTitle' onClick={handlerClickCheckbox}>{title}</span>
             <div>
                 <button className='todo__btn-edit'></button>
-                <button className='todo__btn-remove'></button>
+                <button className='todo__btn-remove' onClick={() => dispatch(removeTodo(id))}></button>
             </div>
         </li>
     )

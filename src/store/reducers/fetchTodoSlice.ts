@@ -26,7 +26,7 @@ export const addTodo = createAsyncThunk<ITodo, string, {rejectValue: string}>(
             completed: false
         }
 
-        const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=10', {
+        const response: Response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=10', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -105,6 +105,9 @@ const asyncTodoSlice = createSlice({
                     toggledTodo.completed = action.payload.completed
                 }
                 state.loading = false
+            })
+            .addCase(toggleTodo.rejected, (state, action) => {
+                state.error = action.payload
             })
             .addMatcher(isError, (state, action: PayloadAction<string>) => {
                 state.error = action.payload
