@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../hooks/hooks'
 
 
 
-const TodoItem = ({ id, title, completed, toggleTodo, removeTodo, loading }: ITodoProps) => {
+const TodoItem = ({ id, title, completed, toggleTodo, removeTodo }: ITodoProps) => {
 
     const [checked, setChecked] = useState(completed)
 

@@ -2,7 +2,7 @@ import { ActionCreatorWithPayload, AsyncThunk } from "@reduxjs/toolkit";
 
 export interface ITodo {
     userId?: number 
-    id: string;
+    id: number;
     title: string;
     completed: boolean;
 }
@@ -16,12 +16,12 @@ export type initialAsyncStateTodo = {
 }
 
 export interface ITodoProps {
-    id: string
+    id: number
     title: string
     completed: boolean
     loading?: boolean
-    toggleTodo: ActionCreatorWithPayload<string, "todo/toggleTodo"> | AsyncThunk<ITodo, string, { rejectValue: string; state: { asyncTodos: initialAsyncStateTodo }}>
-    removeTodo: ActionCreatorWithPayload<string, "todo/removeTodo">
+    toggleTodo: ActionCreatorWithPayload<number, "todo/toggleTodo"> | AsyncThunk<ITodo, number, { rejectValue: string; state: { asyncTodos: initialAsyncStateTodo }}>
+    removeTodo: ActionCreatorWithPayload<number, "todo/removeTodo"> | AsyncThunk<number, number, { rejectValue: string;}>
 }
 
 export interface ITodoInputPlusProps {

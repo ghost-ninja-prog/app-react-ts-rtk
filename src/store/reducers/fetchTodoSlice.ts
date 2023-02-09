@@ -17,7 +17,7 @@ export const fetchTodos = createAsyncThunk<Array<ITodo>, undefined, {rejectValue
 )
 
 export const addTodo = createAsyncThunk<ITodo, string, {rejectValue: string}>(
-    'asyncTodos/addNewTodo',
+    'asyncTodos/addTodo',
     async function (text, { rejectWithValue }) {
 
         const todo = {
@@ -43,8 +43,8 @@ export const addTodo = createAsyncThunk<ITodo, string, {rejectValue: string}>(
 )
 
 
-export const toggleTodo = createAsyncThunk<ITodo, string, { rejectValue: string, state: { asyncTodos: initialAsyncStateTodo } }>(
-    'asyncTodos/toggleStatus',
+export const toggleTodo = createAsyncThunk<ITodo, number, { rejectValue: string, state: { asyncTodos: initialAsyncStateTodo } }>(
+    'asyncTodos/toggleTodo',
     async function (id, { rejectWithValue, getState }) {
         const todo = getState().asyncTodos.todos.find(todo => todo.id === id)
 
@@ -66,6 +66,21 @@ export const toggleTodo = createAsyncThunk<ITodo, string, { rejectValue: string,
         }
         return rejectWithValue('No such todo in the list!')
 
+    }
+)
+
+export const removeTodo = createAsyncThunk<number, number, {rejectValue: string}>(
+    'asyncTodos/removeTodo',
+    async function (id, { rejectWithValue }) {
+
+        const response: Response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+            method: 'DELETE'
+        })
+
+        if (!response.ok) {
+            return rejectWithValue('Can\'t add task. Server error!!!')
+        }
+        return id
     }
 )
 
@@ -108,6 +123,10 @@ const asyncTodoSlice = createSlice({
             })
             .addCase(toggleTodo.rejected, (state, action) => {
                 state.error = action.payload
+            })
+            .addCase(removeTodo.fulfilled, (state, action) => {
+                console.log(action.payload)
+                state.todos = state.todos.filter(todo => todo.id !== action.payload)
             })
             .addMatcher(isError, (state, action: PayloadAction<string>) => {
                 state.error = action.payload
