@@ -1,7 +1,13 @@
 input:checked + .todoTitle {
     text-decoration: line-through;
 }
-
+.inputTaskLabel {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: pointer;
+}
 .todo__btn-edit {
     width: 30px;
     height: 30px;
@@ -14,6 +20,23 @@ input:checked + .todoTitle {
 }
 
 .todo__btn-edit:hover {
+    background-color: rgba(204, 203, 201, 0.651);
+    border: 1px solid rgba(0, 0, 0, .1);
+    scale: 120%;
+}
+
+.todo__btn-save {
+    width: 30px;
+    height: 30px;
+    background: url('./image/check.svg') center/cover;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color, scale .25s;
+}
+
+.todo__btn-save:hover {
     background-color: rgba(204, 203, 201, 0.651);
     border: 1px solid rgba(0, 0, 0, .1);
     scale: 120%;
@@ -35,4 +58,18 @@ input:checked + .todoTitle {
     background-color: rgba(204, 203, 201, 0.651);
     border: 1px solid rgba(0, 0, 0, .1);
     scale: 120%;
+}
+
+.todoTitle {
+    padding: 5px;
+    line-height: 1.2;
+}
+
+.inputTaskTitleEdit {
+    padding: 5px;
+    line-height: 1.2;
+    background-color: #DBE2EF;
+    border: none;
+    font: 1rem 'Roboto', sans-serif;
+    box-shadow: 0 4px 0 -3px #3F72AF;
 }

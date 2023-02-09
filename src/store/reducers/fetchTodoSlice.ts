@@ -125,7 +125,6 @@ const asyncTodoSlice = createSlice({
                 state.error = action.payload
             })
             .addCase(removeTodo.fulfilled, (state, action) => {
-                console.log(action.payload)
                 state.todos = state.todos.filter(todo => todo.id !== action.payload)
             })
             .addMatcher(isError, (state, action: PayloadAction<string>) => {

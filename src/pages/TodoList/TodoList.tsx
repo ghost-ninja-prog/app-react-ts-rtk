@@ -5,19 +5,12 @@ import TodoItem from "../../components/TodoItem"
 
 import './style.css'
 import HeaderNavigation from "../../components/HeaderNavigation/HeaderNavigation"
+import TodoInputPlus from "../../components/TodoInputPlus"
 
 
 const TodoList: React.FC = () => {
     
     const todos = useAppSelector(state => state.todo)
-    const dispatch = useAppDispatch()
-    
-    const [valueInput, setValueInput] = useState('')
-
-    function handlerClickBtn () {
-        dispatch(addTodo(valueInput))
-        setValueInput('')
-    }
 
     return (
         <div className="container">
@@ -25,10 +18,8 @@ const TodoList: React.FC = () => {
             <div className="centerXY">
                 <div className="body__item">
                     <h1 className="titleSyncTodoList">Todo List</h1>
-                    <div>
-                        <input type="text" value={valueInput} onChange={(e) => setValueInput(e.target.value)} />
-                        <button onClick={handlerClickBtn}>Add Todo</button>
-                    </div>
+                    
+                    <TodoInputPlus addTodo={addTodo}/>
 
                     <ul>
                         {

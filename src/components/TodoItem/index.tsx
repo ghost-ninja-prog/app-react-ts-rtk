@@ -9,6 +9,8 @@ import { useAppDispatch } from '../../hooks/hooks'
 const TodoItem = ({ id, title, completed, toggleTodo, removeTodo }: ITodoProps) => {
 
     const [checked, setChecked] = useState(completed)
+    const [value, setValue] = useState(title)
+    const [isEditMode, setIsEditMode] = useState(false)
 
     useEffect(() => {
         setChecked(completed)
@@ -24,10 +26,35 @@ const TodoItem = ({ id, title, completed, toggleTodo, removeTodo }: ITodoProps) 
 
     return (
         <li className='todoItem'>
-            <input type="checkbox" checked={checked} onChange={handlerClickCheckbox} />
-            <span className='todoTitle' onClick={handlerClickCheckbox}>{title}</span>
+            <label className='inputTaskLabel'>
+                <input type="checkbox" checked={checked} onChange={handlerClickCheckbox} />
+                {
+                    isEditMode ? (
+                        <input
+                            value={value}
+                            // ref={editTitleInputRef}
+                            onChange={(evt) => {
+                                setValue(evt.target.value)
+                            }}
+                            className='inputTaskTitleEdit'
+                            onKeyDown={(evt) => {
+                                if(evt.key === 'Enter') {
+                                    // onEdited(id, value)
+                                    setIsEditMode(false)
+                                }
+                            }}
+                        />
+                    ) : (
+                        <h3 className='todoTitle'>{title}</h3>
+                    )
+                }
+            </label>
             <div>
-                <button className='todo__btn-edit'></button>
+                {isEditMode ? (
+                    <button className='todo__btn-save' onClick={() => setIsEditMode(false)}></button>
+                ) : (
+                    <button className='todo__btn-edit' onClick={() => setIsEditMode(true)}></button>
+                )}
                 <button className='todo__btn-remove' onClick={() => dispatch(removeTodo(id))}></button>
             </div>
         </li>

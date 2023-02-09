@@ -36,25 +36,26 @@ const FetchTodoList = () => {
                     
                     <TodoInputPlus addTodo={addTodo} />
 
-                    {error && <h3>Server error</h3>}
 
-                    {loading && <Loader />}
+                    { (loading && todos.length === 0) && <Loader /> }
 
                     <ul className="todoList">
                         {  loading === false && todos.length === 0 ?
                             <li>Not Todos!!!</li>
                             :
                             todos.map((todo: ITodo) => <TodoItem 
-                                                                key={todo.id} 
-                                                                id={todo.id} 
-                                                                completed={todo.completed}
-                                                                title={todo.title}
-                                                                toggleTodo={toggleTodo}
-                                                                removeTodo={removeTodo}
-                                                            />)
+                            key={todo.id} 
+                            id={todo.id} 
+                            completed={todo.completed}
+                            title={todo.title}
+                            toggleTodo={toggleTodo}
+                            removeTodo={removeTodo}
+                            />)
                             
                         }
                     </ul>
+                    
+                    {error && <h3>Server error</h3>}
                 </div>
             </div>
         </div>

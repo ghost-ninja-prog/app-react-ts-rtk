@@ -25,5 +25,5 @@ export interface ITodoProps {
 }
 
 export interface ITodoInputPlusProps {
-    addTodo: AsyncThunk<ITodo, string, {rejectValue: string}>
+    addTodo: AsyncThunk<ITodo, string, {rejectValue: string}> | ActionCreatorWithPayload<string, "todo/addTodo">
 }
