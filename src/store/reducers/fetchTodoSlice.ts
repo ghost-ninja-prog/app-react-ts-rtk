@@ -69,6 +69,36 @@ export const toggleTodo = createAsyncThunk<ITodo, number, { rejectValue: string,
     }
 )
 
+
+
+export const editTodo = createAsyncThunk<ITodo, {id: number, title: string}, { rejectValue: string, state: { asyncTodos: initialAsyncStateTodo } }>(
+    'asyncTodos/editTodo',
+    async function ({id, title}, { rejectWithValue, getState }) {
+        const todo = getState().asyncTodos.todos.find(todo => todo.id === id)
+
+        if (todo) {
+            const response: Response = await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    title: title
+                })
+            })
+    
+            if (!response.ok) {
+                return rejectWithValue('Can\'t toggle status. Server error.')
+            }
+            return (await response.json()) as ITodo
+        }
+        return rejectWithValue('No such todo in the list!')
+
+    }
+)
+
+
+
 export const removeTodo = createAsyncThunk<number, number, {rejectValue: string}>(
     'asyncTodos/removeTodo',
     async function (id, { rejectWithValue }) {
@@ -123,6 +153,12 @@ const asyncTodoSlice = createSlice({
             })
             .addCase(toggleTodo.rejected, (state, action) => {
                 state.error = action.payload
+            })
+            .addCase(editTodo.fulfilled, (state, action) => {
+                const editTodo = state.todos.find(todo => todo.id === action.payload.id)
+                if (editTodo) {
+                    editTodo.title = action.payload.title
+                }
             })
             .addCase(removeTodo.fulfilled, (state, action) => {
                 state.todos = state.todos.filter(todo => todo.id !== action.payload)

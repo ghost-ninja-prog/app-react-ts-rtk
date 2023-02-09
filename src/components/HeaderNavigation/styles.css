@@ -25,9 +25,13 @@
 .navigation__item {
     padding: 3px 7px;
     border-radius: 6px;
-    transition: box-shadow .25s ease-out, transform .25s ease-out;
+    transition: box-shadow .25s ease-out,
+                transform .25s ease-out,
+                border .25s ease-out;
+    box-sizing: border-box;
 }
 .navigation__item:hover {
-    box-shadow: 0 10px 15px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 8px 1px rgba(0, 0, 0, 0.2);
+    outline: 1px solid rgba(0, 0, 0, 10%);
     transform: translateY(-2px);
 }

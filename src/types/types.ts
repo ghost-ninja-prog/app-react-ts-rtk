@@ -22,6 +22,7 @@ export interface ITodoProps {
     loading?: boolean
     toggleTodo: ActionCreatorWithPayload<number, "todo/toggleTodo"> | AsyncThunk<ITodo, number, { rejectValue: string; state: { asyncTodos: initialAsyncStateTodo }}>
     removeTodo: ActionCreatorWithPayload<number, "todo/removeTodo"> | AsyncThunk<number, number, { rejectValue: string;}>
+    editTodo: ActionCreatorWithPayload<{id: number, title: string}, "todo/editTodo"> | AsyncThunk<ITodo, {id: number, title: string}, { rejectValue: string; state: { asyncTodos: initialAsyncStateTodo }}>
 }
 
 export interface ITodoInputPlusProps {

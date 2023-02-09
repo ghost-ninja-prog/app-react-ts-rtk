@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks"
 import { ITodo } from "../../types/types"
-import { fetchTodos, toggleTodo, addTodo, removeTodo } from "../../store/reducers/fetchTodoSlice"
+import { fetchTodos, toggleTodo, addTodo, removeTodo, editTodo } from "../../store/reducers/fetchTodoSlice"
 
 import TodoItem from "../../components/TodoItem"
 import TodoInputPlus from "../../components/TodoInputPlus"
@@ -32,7 +32,7 @@ const FetchTodoList = () => {
             <HeaderNavigation />
             <div className="centerXY">
                 <div className="body__item">
-                    <h1 className="titleFetchTodo">Fetch Todo List</h1>
+                    <h1 className="titleFetchTodo">Async Todo List</h1>
                     
                     <TodoInputPlus addTodo={addTodo} />
 
@@ -44,12 +44,13 @@ const FetchTodoList = () => {
                             <li>Not Todos!!!</li>
                             :
                             todos.map((todo: ITodo) => <TodoItem 
-                            key={todo.id} 
-                            id={todo.id} 
-                            completed={todo.completed}
-                            title={todo.title}
-                            toggleTodo={toggleTodo}
-                            removeTodo={removeTodo}
+                                                            key={todo.id} 
+                                                            id={todo.id} 
+                                                            completed={todo.completed}
+                                                            title={todo.title}
+                                                            toggleTodo={toggleTodo}
+                                                            removeTodo={removeTodo}
+                                                            editTodo={editTodo}
                             />)
                             
                         }

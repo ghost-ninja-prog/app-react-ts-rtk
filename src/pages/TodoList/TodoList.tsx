@@ -1,6 +1,6 @@
-import React, { useState } from "react"
-import { addTodo, removeTodo, toggleTodo } from "../../store/reducers/todoSlice"
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks"
+import React from "react"
+import { addTodo, removeTodo, toggleTodo, editTodo } from "../../store/reducers/todoSlice"
+import { useAppSelector } from "../../hooks/hooks"
 import TodoItem from "../../components/TodoItem"
 
 import './style.css'
@@ -31,6 +31,7 @@ const TodoList: React.FC = () => {
                                                     completed={todo.completed}
                                                     toggleTodo={toggleTodo}
                                                     removeTodo={removeTodo}
+                                                    editTodo={editTodo}
                                                 />
                                     )
                             :
