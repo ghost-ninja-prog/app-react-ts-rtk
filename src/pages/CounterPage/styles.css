@@ -7,11 +7,9 @@
     padding-top: 50px;
 }
 
-.title {
-    font-size: 50px;
-    color: brown;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-decoration: underline;
+.titleCounter {
+    font-size: 36px;
+    color: #000;
 }
 
 .counter__control {
@@ -19,4 +17,10 @@
     justify-content: center;
     align-items: center;
     column-gap: 40px;
+}
+
+.counter__number {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 36px;
+    
 }

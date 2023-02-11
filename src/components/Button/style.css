@@ -1,0 +1,18 @@
+.button__item {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 6px;
+    background-color: rgb(6, 85, 160);
+    border: 1px solid rgba(6, 90, 168, 0.616);
+    cursor: pointer;
+    transition: all .2s ease-out;
+}
+
+.button__item:hover {
+    background-color: rgb(9, 130, 243);
+    border: 1px solid rgba(6, 90, 168, 0.616);
+    transform: translateY(-2px);
+}
