@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useCallback } from "react"
 import Button from "../../components/Button/Button"
 import HeaderNavigation from "../../components/HeaderNavigation/HeaderNavigation"
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks"
@@ -14,21 +14,24 @@ const CounterPage: React.FC = () => {
 
     const dispatch = useAppDispatch()
 
-    const incrementHandler = () => {
+    console.log("render counter")
+
+
+    const incrementHandler = useCallback(() => {
         dispatch(increment())
-    }
+    }, [dispatch])
 
-    const decrementHandler = () => {
+    const decrementHandler = useCallback(() => {
         dispatch(decrement())
-    }
+    }, [dispatch])
 
-    const asyncDecrementHandler = () => {
+    const asyncDecrementHandler = useCallback(() => {
         setTimeout(() => dispatch(decrement()), 1500)
-    }
+    }, [dispatch])
 
-    const asyncIncrementHandler = () => {
+    const asyncIncrementHandler = useCallback(() => {
         setTimeout(() => dispatch(increment()), 1500)
-    }
+    }, [dispatch])
 
     return (
         <div className="container">
@@ -44,8 +47,8 @@ const CounterPage: React.FC = () => {
                         {/* <button onClick={() => dispatch(decrement())}>-</button> */}
                     </div>
                     <div className="counter__control">
-                        <Button content="Asunc -" onClickHandler={asyncDecrementHandler} />
-                        <Button content="Asunc +" onClickHandler={asyncIncrementHandler} />
+                        <Button content="Async -" onClickHandler={asyncDecrementHandler} />
+                        <Button content="Async +" onClickHandler={asyncIncrementHandler} />
                     </div>
                 </div>
             </div>

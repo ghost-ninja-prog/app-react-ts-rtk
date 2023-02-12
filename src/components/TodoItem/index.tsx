@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import './style.css'
 import { ITodoProps } from '../../types/types'
@@ -12,10 +12,15 @@ const TodoItem = ({ id, title, completed, toggleTodo, removeTodo, editTodo }: IT
     const [value, setValue] = useState(title)
     const [isEditMode, setIsEditMode] = useState(false)
 
+    const editTitleInputRef = useRef<HTMLInputElement>(null)
+
     useEffect(() => {
         setChecked(completed)
     }, [completed])
 
+    useEffect(() => {
+        editTitleInputRef?.current?.focus()
+    }, [isEditMode])
 
 
     const dispatch = useAppDispatch()
@@ -33,7 +38,7 @@ const TodoItem = ({ id, title, completed, toggleTodo, removeTodo, editTodo }: IT
                     isEditMode ? (
                         <input
                             value={value}
-                            // ref={editTitleInputRef}
+                            ref={editTitleInputRef}
                             onChange={(evt) => {
                                 setValue(evt.target.value)
                             }}
