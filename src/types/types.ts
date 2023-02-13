@@ -28,3 +28,16 @@ export interface ITodoProps {
 export interface ITodoInputPlusProps {
     addTodo: AsyncThunk<ITodo, string, {rejectValue: string}> | ActionCreatorWithPayload<string, "todo/addTodo">
 }
+
+export interface IPost {
+    userId: number
+    id: number
+    title: string
+    body: string
+}
+
+export interface IPostsInitialState {
+    posts: IPost[]
+    loading: null | boolean
+    error: null | string | undefined
+}

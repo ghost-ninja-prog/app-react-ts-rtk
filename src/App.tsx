@@ -5,6 +5,7 @@ import CounterPage from './pages/CounterPage/CounterPage';
 import ErrorPage from './pages/Error-page/ErrorPage';
 import FetchTodoList from './pages/FetchTodoList/FetchTodoList';
 import HomePage from './pages/HomePage/HomePage';
+import Posts from './pages/Posts/Posts';
 import TodoList from './pages/TodoList/TodoList';
 
 
@@ -25,7 +26,11 @@ const router = createBrowserRouter([
   {
     path: '/fetchtodolist',
     element: <FetchTodoList />,
-  },  
+  },
+  {
+    path: '/posts',
+    element: <Posts />,
+  },
 ])
 
 

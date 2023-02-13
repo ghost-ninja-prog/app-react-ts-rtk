@@ -25,6 +25,9 @@ const HeaderNavigation = () => {
                         <li className='navigation__item'>
                             <Link to={`/fetchtodolist`}>Async Todo List</Link>
                         </li>
+                        <li className='navigation__item'>
+                            <Link to={`/posts`}>Posts</Link>
+                        </li>
                     </ul>
                 </div>
             </div>
