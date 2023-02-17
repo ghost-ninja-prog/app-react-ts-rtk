@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react'
+import Cart from '../../components/Cart'
 import HeaderNavigation from "../../components/HeaderNavigation/HeaderNavigation"
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchPosts } from '../../store/reducers/postsSlide'
+
+import './styles.css'
 
 
 const Posts = () => {
 
     const dispatch = useAppDispatch()
+    const loading = useAppSelector(state => state.posts.loading)
     const posts = useAppSelector(state => state.posts.posts)
 
     useEffect(() => {
@@ -17,11 +21,19 @@ const Posts = () => {
         <div className="container">
             <HeaderNavigation />
             <div className="centerXY">
-                <ul>
-                    {
-                        posts.map(post => <li key={post.id}>{post.title}</li>)
+                <div className='post-container'>
+                    { (posts.length > 0) ? 
+                        (
+                            posts.map(post => <Cart key={post.id} 
+                                                body={post.body}
+                                                id={post.id}
+                                                title={post.title}
+                                            />)
+                        ) : ( 
+                        (loading === false && posts.length === 0) && <h3>No Posts... </h3>
+                        )
                     }
-                </ul>
+                </div>
             </div>
         </div>
     )

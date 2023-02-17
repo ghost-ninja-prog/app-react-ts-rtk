@@ -1,0 +1,17 @@
+.cart {
+    border-radius: 6px;
+    background-color: #fff;
+    padding: 10px 7px;
+}
+
+.cart__title {
+    font-size: 24px;
+    margin: 20px 0 30px;
+    text-transform: uppercase;
+}
+
+.cart__footer {
+    margin: 20px 0;
+    display: flex;
+    column-gap: 20px;
+}

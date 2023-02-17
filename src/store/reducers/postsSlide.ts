@@ -17,6 +17,18 @@ export const fetchPosts = createAsyncThunk<Array<IPost>, undefined, { rejectValu
     }
 )
 
+export const deletePost = createAsyncThunk<number, number, { rejectValue: string }>(
+    'posts/deletePost',
+    async (id, { rejectWithValue }) => {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+
+        if(!response.ok) {
+            return rejectWithValue('server Error')
+        }
+        return id
+    }
+)
+
 const initialState: IPostsInitialState = {
     posts: [],
     loading: null,
@@ -33,12 +45,14 @@ const postsSlice = createSlice({
                 state.loading = true
             })
             .addCase(fetchPosts.fulfilled, (state, action) => {
-                state.loading = false
                 state.posts = action.payload
+                state.loading = false
             })
             .addCase(fetchPosts.rejected, (state, action) => {
-                console.log(action.payload)
                 state.error = action.payload
+            })
+            .addCase(deletePost.fulfilled, (state, action) => {
+                state.posts = state.posts.filter(post => post.id !== action.payload)
             })
             .addMatcher(isError, (state, action: PayloadAction<string>) => {
                 state.error = action.payload

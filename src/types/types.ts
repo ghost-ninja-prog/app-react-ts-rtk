@@ -29,11 +29,11 @@ export interface ITodoInputPlusProps {
     addTodo: AsyncThunk<ITodo, string, {rejectValue: string}> | ActionCreatorWithPayload<string, "todo/addTodo">
 }
 
-export interface IPost {
-    userId: number
-    id: number
-    title: string
-    body: string
+export type IPost = {
+    userId: number;
+    id: number;
+    title: string;
+    body: string;
 }
 
 export interface IPostsInitialState {
