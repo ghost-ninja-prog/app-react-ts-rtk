@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { commentsReducer } from "./reducers/commentsSlice";
 import counterReducer from './reducers/counterSlice'
 import { asyncTodoReducer } from "./reducers/fetchTodoSlice";
 import { postsReducer } from "./reducers/postsSlide";
@@ -10,6 +11,7 @@ export const store = configureStore({
         todo: todoReducer,
         asyncTodos: asyncTodoReducer,
         posts: postsReducer,
+        comments: commentsReducer,
     }
 })
 

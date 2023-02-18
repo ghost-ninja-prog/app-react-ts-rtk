@@ -41,3 +41,16 @@ export interface IPostsInitialState {
     loading: null | boolean
     error: null | string | undefined
 }
+
+export interface IComment {
+    postId?: number;
+    id: number;
+    name: string;
+    email: string;
+    body: string;
+}
+export interface IInitialStateComments {
+    comments: IComment[];
+    loading: null | boolean;
+    error: null | boolean;
+}
