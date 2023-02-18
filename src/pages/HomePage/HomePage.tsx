@@ -5,9 +5,13 @@ import './styles.css'
 
 const HomePage = () => {
     return(
-        <div>
+        <div className="container">
             <HeaderNavigation />
-            <h1>Home Page</h1>
+            <div className="centerXY">
+                <div className="body__item">
+                    <h1 className="home__title">Home Page</h1>
+                </div>
+            </div>
         </div>
     )
 }

@@ -31,11 +31,11 @@ const Cart = ({ body, id, title }: ICartProps) => {
 
     return (
         <div className="cart">
+            <div className="cart__btn-delete" onClick={clickBtnDelete}>&times;</div>
             <h4 className="cart__title">{title}</h4>
             <p className="cart__body">{ body }</p>
             <div className='cart__footer'>
                 <button className='cart__btn-edit'>Edit</button>
-                <button className='cart__btn-delete' onClick={clickBtnDelete}>Delete</button>
                 <button className='cart__btn-comments' onClick={clickBtnComments}>Comments</button>
             </div>
             {

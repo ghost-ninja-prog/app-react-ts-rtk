@@ -1,6 +1,29 @@
+
+.cart {
+    position: relative;
+}
+
+.cart__btn-delete {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 4px;
+    font-size: 25px;
+    line-height: 14px;
+    border: 1px solid rgba(0, 0, 0, .3);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: backgroung .25s ease-out;
+}
+
+.cart__btn-delete:hover {
+    background-color: rgba(0, 0, 0, .2);
+}
+
 .comment__body {
     max-width: 90%;
     padding: 10px 5px;
+    padding-left: 30px;
 }
 
 .comment__name {
