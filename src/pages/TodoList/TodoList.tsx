@@ -6,11 +6,12 @@ import TodoItem from "../../components/TodoItem"
 import './style.css'
 import HeaderNavigation from "../../components/HeaderNavigation/HeaderNavigation"
 import TodoInputPlus from "../../components/TodoInputPlus"
+import { ITodo } from "../../types/types"
 
 
 const TodoList: React.FC = () => {
     
-    const todos = useAppSelector(state => state.todo)
+    const todos: ITodo[] = useAppSelector(state => state.todo)
 
     return (
         <div className="container">

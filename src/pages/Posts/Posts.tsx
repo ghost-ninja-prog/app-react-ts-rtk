@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import Cart from '../../components/Cart'
 import HeaderNavigation from "../../components/HeaderNavigation/HeaderNavigation"
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
-import { fetchPosts } from '../../store/reducers/postsSlide'
+import { fetchPosts } from '../../store/reducers/postsSlice'
+import { IPost } from '../../types/types'
 
 import './styles.css'
 
@@ -10,8 +11,8 @@ import './styles.css'
 const Posts = () => {
 
     const dispatch = useAppDispatch()
-    const loading = useAppSelector(state => state.posts.loading)
-    const posts = useAppSelector(state => state.posts.posts)
+    const loading: null | boolean = useAppSelector(state => state.posts.loading)
+    const posts: IPost[] = useAppSelector(state => state.posts.posts)
 
     useEffect(() => {
         dispatch(fetchPosts())

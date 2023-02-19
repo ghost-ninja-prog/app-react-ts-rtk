@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import CounterPage from './pages/CounterPage/CounterPage';
 import ErrorPage from './pages/Error-page/ErrorPage';
-import FetchTodoList from './pages/FetchTodoList/FetchTodoList';
+import AsyncTodoList from './pages/AsyncTodoList/AsyncTodoList';
 import HomePage from './pages/HomePage/HomePage';
 import Posts from './pages/Posts/Posts';
 import TodoList from './pages/TodoList/TodoList';
@@ -24,8 +24,8 @@ const router = createBrowserRouter([
     element: <TodoList />,
   },
   {
-    path: '/fetchtodolist',
-    element: <FetchTodoList />,
+    path: '/asynctodolist',
+    element: <AsyncTodoList />,
   },
   {
     path: '/posts',

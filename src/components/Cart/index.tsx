@@ -1,7 +1,8 @@
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { fetchComments } from '../../store/reducers/commentsSlice';
-import { deletePost } from '../../store/reducers/postsSlide';
+import { deletePost } from '../../store/reducers/postsSlice';
+import { IComment } from '../../types/types';
 import Comment from '../Comment';
 
 import './styles.css'
@@ -17,7 +18,7 @@ interface ICartProps {
 const Cart = ({ body, id, title }: ICartProps) => {
 
 
-    const comments = useAppSelector(state => state.comments.comments)
+    const comments: IComment[] = useAppSelector(state => state.comments.comments)
     const dispatch = useAppDispatch()
 
     const clickBtnDelete = () => {
