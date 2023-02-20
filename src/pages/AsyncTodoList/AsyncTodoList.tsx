@@ -14,8 +14,6 @@ import Loader from "../../components/Loader/Loader"
 const FetchTodoList = () => {
     
     const { todos, loading, error } = useAppSelector(state => state.asyncTodo)
-    // const loading: null | boolean = useAppSelector(state => state.fetchTodo.loading)
-    // const error: null | string = useAppSelector(state => state.fetchTodo.error)
 
 
 

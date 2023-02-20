@@ -3,7 +3,6 @@ import Cart from '../../components/Cart'
 import HeaderNavigation from "../../components/HeaderNavigation/HeaderNavigation"
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchPosts } from '../../store/reducers/postsSlice'
-import { IPost } from '../../types/types'
 
 import './styles.css'
 
@@ -11,8 +10,7 @@ import './styles.css'
 const Posts = () => {
 
     const dispatch = useAppDispatch()
-    const loading: null | boolean = useAppSelector(state => state.posts.loading)
-    const posts: IPost[] = useAppSelector(state => state.posts.posts)
+    const { loading, posts } = useAppSelector(state => state.posts)
 
     useEffect(() => {
         dispatch(fetchPosts())
