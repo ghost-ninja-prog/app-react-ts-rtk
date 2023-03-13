@@ -1,2 +1,2 @@
 # React + TypeScript + RTK 
-TodoList + FetchTodoList + Counter
+TodoList + FetchTodoList + Counter + FetchPosts
