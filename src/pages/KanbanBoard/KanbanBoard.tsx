@@ -17,25 +17,21 @@ function KanbanBoard() {
 
   return (
     <>
-    {/* // <div className='container'> */}
       <HeaderNavigation />
-      {/* <div className='centerXY'> */}
-        <div className='app-container'>
-          <DragDropContext onDragEnd={result => dispatch(onDragEnd(result))} >
-            {columns.map((column, index) => {
-              return (
-                <Board
-                  key={index}
-                  boardIndex={index}
-                  column={column}
-                />
-              )
-            })}
-            <AddBoard />
-          </DragDropContext>
-        </div>
-      {/* </div> */}
-    {/* // </div> */}
+      <div className='app-container'>
+        <DragDropContext onDragEnd={result => dispatch(onDragEnd(result))} >
+          {columns.map((column, index) => {
+            return (
+              <Board
+                key={index}
+                boardIndex={index}
+                column={column}
+              />
+            )
+          })}
+          <AddBoard />
+        </DragDropContext>
+      </div>
     </>
   )
 }
