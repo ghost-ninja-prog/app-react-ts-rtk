@@ -54,3 +54,8 @@ export interface IInitialStateComments {
     loading: null | boolean;
     error: null | boolean;
 }
+
+export type KanbanCardType = {
+    id: string,
+    content: string
+}

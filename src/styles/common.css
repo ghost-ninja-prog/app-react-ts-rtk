@@ -17,6 +17,11 @@ a {
     font-weight: 500;
 }
 
+#bg-vanta {
+    width: 100%;
+    height: calc(100vh - 90px);
+}
+
 .container {
     max-width: 1920px;
     padding: 20px;

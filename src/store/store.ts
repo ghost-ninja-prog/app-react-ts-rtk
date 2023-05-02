@@ -29,6 +29,7 @@ import { counterReducer } from "./reducers/counterSlice";
 import { asyncTodoReducer } from "./reducers/fetchTodoSlice";
 import { postsReducer } from "./reducers/postsSlice";
 import { todoReducer } from "./reducers/todoSlice";
+import { kanbanBoardReducer } from "./reducers/kanbanBoardSlice";
 
 
 const rootReducer = combineReducers({
@@ -36,13 +37,14 @@ const rootReducer = combineReducers({
     counter: counterReducer,
     asyncTodo: asyncTodoReducer,
     posts: postsReducer,
-    todo: todoReducer
+    todo: todoReducer,
+    kanbanBoard: kanbanBoardReducer
 })
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['todo', 'counter']
+    whitelist: ['todo', 'counter', 'kanbanBoard']
 }
 
 const _persistedReducer = persistReducer(persistConfig, rootReducer)
