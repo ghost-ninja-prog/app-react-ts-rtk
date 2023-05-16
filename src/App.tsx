@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage/HomePage';
 import Posts from './pages/Posts/Posts';
 import TodoList from './pages/TodoList/TodoList';
 import KanbanBoard from './pages/KanbanBoard/KanbanBoard';
+import ShortLink from './pages/ShortLink/ShortLink';
 
 
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: '/kanban_board',
     element: <KanbanBoard />
+  },
+  {
+    path: '/short_link',
+    element: <ShortLink />
   }
 ])
 

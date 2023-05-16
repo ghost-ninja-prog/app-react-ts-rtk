@@ -31,6 +31,9 @@ const HeaderNavigation = () => {
                         <li className='navigation__item'>
                             <Link to={`/kanban_board`}>Kanban Board</Link>
                         </li>
+                        <li className='navigation__item'>
+                            <Link to={`/short_link`}>Short Link</Link>
+                        </li>
                     </ul>
                 </div>
             </div>
